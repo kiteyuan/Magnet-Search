@@ -1,0 +1,2485 @@
+{
+    "configName": "通用规则",
+    "configVersion": "1.0.0",
+    "regulars": [
+        {
+            "engineName": "磁力蜘蛛",
+            "engineUrl": "https://btmovi.cyou",
+            "engineTags": ["general","movie"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/so/%SearchKey%_rel_%Page%.html"
+                },
+                {
+                    "sortName": "时间",
+                    "sortKey": "time",
+                    "sortUrl": "/so/%SearchKey%_time_%Page%.html"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hits",
+                    "sortUrl": "/so/%SearchKey%_hits_%Page%.html"
+                },
+                {
+                    "sortName": "大小",
+                    "sortKey": "size",
+                    "sortUrl": "/so/%SearchKey%_size_%Page%.html"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/so/%SearchKey%_rel_%Page%.html",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "priority": "u=0, i",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.search-item",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.item-title > h3 > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.item-title > h3 > a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.item-bar > span:nth-child(3) > b",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.item-bar > span:nth-child(2) > b",
+                            "action": "text"
+                        },
+                        "hot": {
+                            "src": "div.item-bar > span:nth-child(4) > b",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.item-list",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "#m_link",
+                                    "action": "attr:value"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/so/%SearchKey%_rel_%Page%.html"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/so/%SearchKey%_time_%Page%.html"
+                        },
+                        {
+                            "name": "hits",
+                            "url": "/so/%SearchKey%_hits_%Page%.html"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/so/%SearchKey%_size_%Page%.html"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Tokyotosho",
+            "engineUrl": "https://www.tokyotosho.info",
+            "engineTags": ["anime"],
+            "isExternalEngine": false,
+            "defaultSort": "All",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "All",
+                    "sortKey": "All",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=0"
+                },
+                {
+                    "sortName": "Anime",
+                    "sortKey": "Anime",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=1"
+                },
+                {
+                    "sortName": "Non-English",
+                    "sortKey": "Non-English",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=10"
+                },
+                {
+                    "sortName": "Hentai",
+                    "sortKey": "Hentai",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=4"
+                },
+                {
+                    "sortName": "Jav",
+                    "sortKey": "Jav",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=15"
+                },
+                {
+                    "sortName": "other",
+                    "sortKey": "other",
+                    "sortUrl": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=5"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=0"
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "#main>table.listing>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td.desc-top > a:nth-child(2)",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td.web > a:last-child",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td.desc-top > a:nth-child(1)",
+                            "action": "attr:href"
+                        },
+                        "description": {
+                            "src": "td.desc-bot",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "All",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=0"
+                        },
+                        {
+                            "name": "Anime",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=1"
+                        },
+                        {
+                            "name": "Non-English",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=10"
+                        },
+                        {
+                            "name": "Hentai",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=4"
+                        },
+                        {
+                            "name": "Jav",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=15"
+                        },
+                        {
+                            "name": "other",
+                            "url": "/search.php?page=%Page%&searchComment=true&searchName=true&terms=%SearchKey%&type=5"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "DMHY",
+            "engineUrl": "https://dmhy.anoneko.com",
+            "engineTags": ["anime"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/topics/list?keyword=%SearchKey%&page=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/topics/list?keyword=%SearchKey%&page=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "table#topic_list tbody tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td.title a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td.title a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td:nth-child(4) a[href^='magnet:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(5)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(1)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td:nth-child(2)",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 80,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/topics/list?keyword=%SearchKey%&page=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Seed8",
+            "engineUrl": "https://zzb01.top",
+            "engineTags": ["porn"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "rel",
+                    "sortUrl": "/search?wd=%SearchKey%&sort=rel&page=%Page%"
+                },
+                {
+                    "sortName": "时间",
+                    "sortKey": "time",
+                    "sortUrl": "/search?wd=%SearchKey%&sort=time&page=%Page%"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hits",
+                    "sortUrl": "/search?wd=%SearchKey%&sort=hits&page=%Page%"
+                },
+                {
+                    "sortName": "大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search?wd=%SearchKey%&sort=size&page=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?wd=%SearchKey%&sort=rel&page=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.search-list ul.media-list li.media",
+                    "itemFields": {
+                        "title": {
+                            "src": "h4.media-heading a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "h4.media-heading a",
+                            "action": "attr:href"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "a#down-url",
+                                    "action": "attr:href"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 15,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search?wd=%SearchKey%&sort=rel&page=%Page%"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/search?wd=%SearchKey%&sort=time&page=%Page%"
+                        },
+                        {
+                            "name": "hits",
+                            "url": "/search?wd=%SearchKey%&sort=hits&page=%Page%"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search?wd=%SearchKey%&sort=size&page=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "BTFox",
+            "engineUrl": "https://btfox11.top",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/s/%Page%?wd=%SearchKey%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/s/%Page%?wd=%SearchKey%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.box_border div.item",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.threadlist_subject a[href^='/info/']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.threadlist_subject a[href^='/info/']",
+                            "action": "attr:href"
+                        },
+                        "description": {
+                            "src": "div.threadlist_note",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "a[href^='magnet:']",
+                                    "action": "attr:href"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 10,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/s/%Page%?wd=%SearchKey%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "无极磁力",
+            "engineUrl": "https://1cili.com",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search?q=%SearchKey%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?q=%SearchKey%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://1cili.com/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "body>div>table>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td:nth-child(1)>a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td>a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td.td-size",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td:nth-child(1)>a>p",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "#input-magnet",
+                                    "action": "attr:value"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search?q=%SearchKey%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "BTShow",
+            "engineUrl": "https://btsow.pics",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "POST",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/bts/data/api/search"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "POST",
+                    "url": "/bts/data/api/search",
+                    "payloadType": "json",
+                    "payloadTemplate": "[{\"search\":\"%SearchKey%\"}, 50, %Page%]",
+                    "headers": {
+                        "accept": "application/json, text/plain, */*",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "content-type": "application/json",
+                        "origin": "https://btsow.pics",
+                        "referer": "https://btsow.pics/",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+                        "pragma": "no-cache",
+                        "expires": "0",
+                        "priority": "u=1, i"
+                    }
+                },
+                "parser": {
+                    "responseType": "json",
+                    "listPointer": "data",
+                    "itemFields": {
+                        "title": {
+                            "src": "name",
+                            "action": "value"
+                        },
+                        "size": {
+                            "src": "size",
+                            "action": "value"
+                        },
+                        "date": {
+                            "src": "lastUpdateTime",
+                            "action": "value"
+                        },
+                        "detailLink": {
+                            "src": "hash",
+                            "action": "value",
+                            "template": "https://btsow.pics/magnet/detail/%value%"
+                        },
+                        "magnet": {
+                            "src": "hash",
+                            "action": "value",
+                            "template": "magnet:?xt=urn:btih:%value%"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 50,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/bts/data/api/search"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "种子吧",
+            "engineUrl": "https://m.zhongziso.com",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关",
+                    "sortKey": "rel",
+                    "sortUrl": "/list_click/%SearchKey%/%Page%"
+                },
+                {
+                    "sortName": "时间",
+                    "sortKey": "time",
+                    "sortUrl": "/list/%SearchKey%/%Page%"
+                },
+                {
+                    "sortName": "大小",
+                    "sortKey": "size",
+                    "sortUrl": "/list_length/%SearchKey%/%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/list_click/%SearchKey%/%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://m.zhongziso.com/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.panel-body>ul",
+                    "itemFields": {
+                        "title": {
+                            "src": "li.title>a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "li.title>a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "li.text-left dd.text-size",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "li.text-left dd.text-time",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "li.text-left dd.text-type",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%",
+                            "headers": {
+                                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                                "accept-language": "zh-CN,zh;q=0.9",
+                                "referer": "https://m.zhongziso.com/",
+                                "upgrade-insecure-requests": "1",
+                                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                            }
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "textarea#copytext",
+                                    "action": "text"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/list_click/%SearchKey%/%Page%"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/list/%SearchKey%/%Page%"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/list_length/%SearchKey%/%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力妹妹",
+            "engineUrl": "https://www.clmmbt.com",
+            "engineTags": ["porn"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关程度",
+                    "sortKey": "rel",
+                    "sortUrl": "/search-%SearchKey%-0-0-%Page%.html"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hot",
+                    "sortUrl": "/search-%SearchKey%-0-3-%Page%.html"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search-%SearchKey%-0-1-%Page%.html"
+                },
+                {
+                    "sortName": "添加时间",
+                    "sortKey": "time",
+                    "sortUrl": "/search-%SearchKey%-0-2-%Page%.html"
+                },
+                {
+                    "sortName": "最近访问",
+                    "sortKey": "views",
+                    "sortUrl": "/search-%SearchKey%-0-4-%Page%.html"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search-%SearchKey%-0-0-%Page%.html",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://www.clmmbt.com/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "#content .search_list>dl.detail",
+                    "itemFields": {
+                        "title": {
+                            "src": "dt>a>span",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "dt>a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "dd.info>span:nth-child(3)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "dd.info>span:nth-child(1)>b",
+                            "action": "text"
+                        },
+                        "magnet": {
+                            "src": "dd.info a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "description": {
+                            "src": "dd.info",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search-%SearchKey%-0-0-%Page%.html"
+                        },
+                        {
+                            "name": "hot",
+                            "url": "/search-%SearchKey%-0-3-%Page%.html"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search-%SearchKey%-0-1-%Page%.html"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/search-%SearchKey%-0-2-%Page%.html"
+                        },
+                        {
+                            "name": "views",
+                            "url": "/search-%SearchKey%-0-4-%Page%.html"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力星球",
+            "engineUrl": "https://div.xingqiu.icu",
+            "engineTags": ["general","movie"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关度",
+                    "sortKey": "rel",
+                    "sortUrl": "/search?word=%SearchKey%&page=%Page%&sort=rel"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search?word=%SearchKey%&page=%Page%&sort=size"
+                },
+                {
+                    "sortName": "收录时间",
+                    "sortKey": "date",
+                    "sortUrl": "/search?word=%SearchKey%&page=%Page%&sort=date"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?word=%SearchKey%&page=%Page%&sort=rel",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://div.xingqiu.icu/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.row.justify-content-center>div.col-md-8>ul.list-group>li.list-group-item",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.font-title>a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.font-title>a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.sub-title span.badge",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.foo",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.foo",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%",
+                            "headers": {
+                                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                                "accept-language": "zh-CN,zh;q=0.9",
+                                "referer": "https://div.xingqiu.icu/",
+                                "upgrade-insecure-requests": "1",
+                                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                            }
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "#copy",
+                                    "action": "attr:title"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search?word=%SearchKey%&page=%Page%&sort=rel"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search?word=%SearchKey%&page=%Page%&sort=size"
+                        },
+                        {
+                            "name": "date",
+                            "url": "/search?word=%SearchKey%&page=%Page%&sort=date"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Sukebei",
+            "engineUrl": "https://sukebei.nyaa.si",
+            "engineTags": ["anime","porn"],
+            "isExternalEngine": false,
+            "defaultSort": "Allcategories",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "Allcategories",
+                    "sortKey": "Allcategories",
+                    "sortUrl": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%"
+                },
+                {
+                    "sortName": "Art",
+                    "sortKey": "Art",
+                    "sortUrl": "/?f=0&c=1_0&q=%SearchKey%&p=%Page%"
+                },
+                {
+                    "sortName": "RealLife",
+                    "sortKey": "RealLife",
+                    "sortUrl": "/?f=0&c=2_0&q=%SearchKey%&p=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://sukebei.nyaa.si/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.table-responsive>table>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td:nth-child(2)>a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td:nth-child(2)>a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td:nth-child(3) a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(4)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(5)",
+                            "action": "attr:data-timestamp"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "Allcategories",
+                            "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%"
+                        },
+                        {
+                            "name": "Art",
+                            "url": "/?f=0&c=1_0&q=%SearchKey%&p=%Page%"
+                        },
+                        {
+                            "name": "RealLife",
+                            "url": "/?f=0&c=2_0&q=%SearchKey%&p=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "海盗湾",
+            "engineUrl": "https://thepiratebay10.xyz",
+            "engineTags": ["general","movie","porn"],
+            "isExternalEngine": false,
+            "defaultSort": "All",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "All",
+                    "sortKey": "All",
+                    "sortUrl": "/search/%SearchKey%/%Page%/99/0"
+                },
+                {
+                    "sortName": "Audio",
+                    "sortKey": "Audio",
+                    "sortUrl": "/search/%SearchKey%/%Page%/99/100"
+                },
+                {
+                    "sortName": "Video",
+                    "sortKey": "Video",
+                    "sortUrl": "/search/%SearchKey%/%Page%/99/200"
+                },
+                {
+                    "sortName": "Games",
+                    "sortKey": "Games",
+                    "sortUrl": "/search/%SearchKey%/%Page%/99/400"
+                },
+                {
+                    "sortName": "Porn",
+                    "sortKey": "Porn",
+                    "sortUrl": "/search/%SearchKey%/%Page%/99/500"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search/%SearchKey%/%Page%/99/0",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "referer": "https://thepiratebay10.xyz/",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "#searchResult>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td:nth-child(2)>a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td:nth-child(2)>a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td:nth-child(4) a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(5)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(3)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td:nth-child(3)",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "All",
+                            "url": "/search/%SearchKey%/%Page%/99/0"
+                        },
+                        {
+                            "name": "Audio",
+                            "url": "/search/%SearchKey%/%Page%/99/100"
+                        },
+                        {
+                            "name": "Video",
+                            "url": "/search/%SearchKey%/%Page%/99/200"
+                        },
+                        {
+                            "name": "Games",
+                            "url": "/search/%SearchKey%/%Page%/99/400"
+                        },
+                        {
+                            "name": "Porn",
+                            "url": "/search/%SearchKey%/%Page%/99/500"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力口袋",
+            "engineUrl": "https://kd705.site",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/clkd/api/search?keyword=%SearchKey%&page=%Page%&size=20"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/clkd/api/search?keyword=%SearchKey%&page=%Page%&size=20",
+                    "payloadType": "json",
+                    "payloadTemplate": "",
+                    "headers": {
+                        "accept": "*/*",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "priority": "u=1, i",
+                        "referer": "https://kd705.site/list.html?keyword=%SearchKey%",
+                        "sec-ch-ua": "\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "empty",
+                        "sec-fetch-mode": "cors",
+                        "sec-fetch-site": "same-origin",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "json",
+                    "listPointer": "list",
+                    "itemFields": {
+                        "title": {
+                            "src": "torrentName",
+                            "action": "value"
+                        },
+                        "size": {
+                            "src": "torrentSize",
+                            "action": "value"
+                        },
+                        "date": {
+                            "src": "createTime",
+                            "action": "value"
+                        },
+                        "magnet": {
+                            "src": "hashInfo",
+                            "action": "value",
+                            "template": "magnet:?xt=urn:btih:%value%"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 20,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/clkd/api/search?keyword=%SearchKey%&page=%Page%&size=20"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "BTDigg",
+            "engineUrl": "https://btdig.com",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search?q=%SearchKey%&p=%Offset%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?q=%SearchKey%&p=%Offset%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "priority": "u=0, i",
+                        "referer": "https://btdig.com/",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.one_result",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.torrent_name > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.torrent_name > a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "div.torrent_magnet a[href^='magnet:?']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "span.torrent_size",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "span.torrent_age",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.torrent_excerpt",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search?q=%SearchKey%&p=%Offset%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "AnyBT",
+            "engineUrl": "https://anybt.eth.link",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "POST",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "https://gw.magnode.ru/v1/sql/query"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "POST",
+                    "url": "https://gw.magnode.ru/v1/sql/query",
+                    "payloadType": "json",
+                    "payloadTemplate": "{\"sql\":\"select file_name,filesize,total_count,_id,category,firstadd_utc_timestamp,_score from library.dht where query_string('%SearchKey%') order by total_count desc limit %Offset%, 200\",\"dataset_name\":\"anybt\",\"arguments\":[]}",
+                    "headers": {
+                        "accept": "application/json",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "content-type": "application/json",
+                        "origin": "https://anybt.eth.link",
+                        "priority": "u=1, i",
+                        "referer": "https://anybt.eth.link/",
+                        "sec-ch-ua": "\"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"144\", \"Google Chrome\";v=\"144\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "empty",
+                        "sec-fetch-mode": "cors",
+                        "sec-fetch-site": "cross-site",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "json",
+                    "listPointer": "result",
+                    "itemFields": {
+                        "title": {
+                            "src": "row.file_name.value",
+                            "action": "value"
+                        },
+                        "size": {
+                            "src": "row.filesize.value",
+                            "action": "value"
+                        },
+                        "date": {
+                            "src": "row.firstadd_utc_timestamp.value",
+                            "action": "value"
+                        },
+                        "description": {
+                            "src": "row.category.value",
+                            "action": "value"
+                        },
+                        "magnet": {
+                            "src": "row._id.value",
+                            "action": "value",
+                            "template": "magnet:?xt=urn:btih:%value%"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "pageSize": 200,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "https://gw.magnode.ru/v1/sql/query"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "天堂磁力",
+            "engineUrl": "https://tt.ttcl.icu",
+            "engineTags": ["porn"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search?key=%SearchKey%&ap=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?key=%SearchKey%&ap=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "priority": "u=0, i",
+                        "referer": "https://tt.ttcl.icu/search?key=%SearchKey%&ap=1",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "iframe",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-storage-access": "active",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.panel.panel-default.search-panel",
+                    "itemFields": {
+                        "title": {
+                            "src": "h3.panel-title > a.list-title",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "h3.panel-title > a.list-title",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "h3.panel-title > a.list-title",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.panel-footer span.info-item:nth-of-type(1)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.panel-footer span.info-item:nth-of-type(3)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.panel-body li.list-file",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search?key=%SearchKey%&ap=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力狗",
+            "engineUrl": "https://www.clg196.buzz",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关程度",
+                    "sortKey": "rel",
+                    "sortUrl": "/search-%SearchKey%-0-0-%Page%.html"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hot",
+                    "sortUrl": "/search-%SearchKey%-0-3-%Page%.html"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search-%SearchKey%-0-1-%Page%.html"
+                },
+                {
+                    "sortName": "添加时间",
+                    "sortKey": "time",
+                    "sortUrl": "/search-%SearchKey%-0-2-%Page%.html"
+                },
+                {
+                    "sortName": "最近访问",
+                    "sortKey": "views",
+                    "sortUrl": "/search-%SearchKey%-0-4-%Page%.html"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search-%SearchKey%-0-0-%Page%.html",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "cache-control": "max-age=0",
+                        "priority": "u=0, i",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.tbox > div.ssbox",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.title h3 > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.title h3 > a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "div.sbar a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.sbar > span:nth-child(3) > b",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.sbar > span:nth-child(2) > b",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.slist li",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search-%SearchKey%-0-0-%Page%.html"
+                        },
+                        {
+                            "name": "hot",
+                            "url": "/search-%SearchKey%-0-3-%Page%.html"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search-%SearchKey%-0-1-%Page%.html"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/search-%SearchKey%-0-2-%Page%.html"
+                        },
+                        {
+                            "name": "views",
+                            "url": "/search-%SearchKey%-0-4-%Page%.html"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力狐",
+            "engineUrl": "https://cache.foxs.top",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认排序",
+                    "sortKey": "default",
+                    "sortUrl": "/search?word=%SearchKey%&page=%Page%"
+                },
+                {
+                    "sortName": "资源热度",
+                    "sortKey": "hot",
+                    "sortUrl": "/search?word=%SearchKey%&sort=viewnum&page=%Page%"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search?word=%SearchKey%&sort=size&page=%Page%"
+                },
+                {
+                    "sortName": "更新时间",
+                    "sortKey": "date",
+                    "sortUrl": "/search?word=%SearchKey%&sort=date&page=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?word=%SearchKey%&page=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "priority": "u=0, i",
+                        "referer": "https://cache.foxs.top/search?word=%SearchKey%",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "iframe",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-storage-access": "active",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "#biuuu_city_list div.search-box",
+                    "itemFields": {
+                        "title": {
+                            "src": "h2.search-colla-title > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "h2.search-colla-title > a",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.layui-colla-content p:nth-child(2) > span",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.layui-colla-content p:nth-child(1) > span",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.layui-colla-content",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%",
+                            "headers": {
+                                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                                "accept-language": "zh-CN,zh;q=0.9",
+                                "referer": "https://cache.foxs.top/search?word=%SearchKey%",
+                                "upgrade-insecure-requests": "1",
+                                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                            }
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "#link-url",
+                                    "action": "attr:href"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search?word=%SearchKey%&page=%Page%"
+                        },
+                        {
+                            "name": "hot",
+                            "url": "/search?word=%SearchKey%&sort=viewnum&page=%Page%"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search?word=%SearchKey%&sort=size&page=%Page%"
+                        },
+                        {
+                            "name": "date",
+                            "url": "/search?word=%SearchKey%&sort=date&page=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力帝",
+            "engineUrl": "https://www.cld140.buzz",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关程度",
+                    "sortKey": "rel",
+                    "sortUrl": "/search-%SearchKey%-0-0-%Page%.html"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hot",
+                    "sortUrl": "/search-%SearchKey%-0-3-%Page%.html"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search-%SearchKey%-0-1-%Page%.html"
+                },
+                {
+                    "sortName": "添加时间",
+                    "sortKey": "time",
+                    "sortUrl": "/search-%SearchKey%-0-2-%Page%.html"
+                },
+                {
+                    "sortName": "最近访问",
+                    "sortKey": "views",
+                    "sortUrl": "/search-%SearchKey%-0-4-%Page%.html"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search-%SearchKey%-0-0-%Page%.html",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "cache-control": "max-age=0",
+                        "priority": "u=0, i",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "cross-site",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.tbox > div.ssbox",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.title h3 > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.title h3 > a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "div.sbar a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.sbar > span:nth-child(3) > b",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.sbar > span:nth-child(2) > b",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.slist li",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search-%SearchKey%-0-0-%Page%.html"
+                        },
+                        {
+                            "name": "hot",
+                            "url": "/search-%SearchKey%-0-3-%Page%.html"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search-%SearchKey%-0-1-%Page%.html"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/search-%SearchKey%-0-2-%Page%.html"
+                        },
+                        {
+                            "name": "views",
+                            "url": "/search-%SearchKey%-0-4-%Page%.html"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "1024BT",
+            "engineUrl": "https://iequszii.1024207.xyz",
+            "engineTags": ["porn"],
+            "isExternalEngine": false,
+            "defaultSort": "rel",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "相关程度",
+                    "sortKey": "rel",
+                    "sortUrl": "/search-%SearchKey%-0-0-%Page%.html"
+                },
+                {
+                    "sortName": "热度",
+                    "sortKey": "hot",
+                    "sortUrl": "/search-%SearchKey%-0-3-%Page%.html"
+                },
+                {
+                    "sortName": "文件大小",
+                    "sortKey": "size",
+                    "sortUrl": "/search-%SearchKey%-0-1-%Page%.html"
+                },
+                {
+                    "sortName": "添加时间",
+                    "sortKey": "time",
+                    "sortUrl": "/search-%SearchKey%-0-2-%Page%.html"
+                },
+                {
+                    "sortName": "最近访问",
+                    "sortKey": "views",
+                    "sortUrl": "/search-%SearchKey%-0-4-%Page%.html"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search-%SearchKey%-0-0-%Page%.html",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "cache-control": "max-age=0",
+                        "priority": "u=0, i",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.tbox > div.ssbox",
+                    "itemFields": {
+                        "title": {
+                            "src": "div.title h3 > a",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "div.title h3 > a",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "div.sbar a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.sbar > span:nth-child(3) > b",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.sbar > span:nth-child(2) > b",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.slist li",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "rel",
+                            "url": "/search-%SearchKey%-0-0-%Page%.html"
+                        },
+                        {
+                            "name": "hot",
+                            "url": "/search-%SearchKey%-0-3-%Page%.html"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search-%SearchKey%-0-1-%Page%.html"
+                        },
+                        {
+                            "name": "time",
+                            "url": "/search-%SearchKey%-0-2-%Page%.html"
+                        },
+                        {
+                            "name": "views",
+                            "url": "/search-%SearchKey%-0-4-%Page%.html"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "磁力搜",
+            "engineUrl": "https://so.techlife.app",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/code/%SearchKey%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/code/%SearchKey%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "cache-control": "max-age=0",
+                        "priority": "u=0, i",
+                        "referer": "https://so.techlife.app/",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "section.text-gray-600.body-font.overflow-hidden div.-my-8 > div.py-8",
+                    "itemFields": {
+                        "title": {
+                            "src": "h2.title-font",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "p.leading-relaxed",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "span.font-semibold.title-font",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "h2.title-font",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/code/%SearchKey%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Nyaa",
+            "engineUrl": "https://nyaa.si",
+            "engineTags": ["anime"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%"
+                },
+                {
+                    "sortName": "种子",
+                    "sortKey": "seeders",
+                    "sortUrl": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%&s=seeders&o=desc"
+                },
+                {
+                    "sortName": "大小",
+                    "sortKey": "size",
+                    "sortUrl": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%&s=size&o=desc"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "table.torrent-list>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td[colspan='2'] > a[href^='/view/']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td[colspan='2'] > a[href^='/view/']",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td.text-center > a[href^='magnet:?']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(4)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(5)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td[colspan='2'] > a[href^='/view/']",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%"
+                        },
+                        {
+                            "name": "seeders",
+                            "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%&s=seeders&o=desc"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/?f=0&c=0_0&q=%SearchKey%&p=%Page%&s=size&o=desc"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "BitSearch",
+            "engineUrl": "https://bitsearch.to",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search?q=%SearchKey%&page=%Page%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search?q=%SearchKey%&page=%Page%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "div.bg-white.rounded-lg.shadow-sm.border.border-gray-200.p-6",
+                    "itemFields": {
+                        "title": {
+                            "src": "h3 a[href^='/torrent/']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "h3 a[href^='/torrent/']",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "a[href^='magnet:?']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "div.flex.flex-wrap.items-center.gap-4.text-sm.text-gray-600.mb-3 > span:nth-child(2) > span",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "div.flex.flex-wrap.items-center.gap-4.text-sm.text-gray-600.mb-3 > span:nth-child(3) > span",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "div.flex.flex-wrap.items-center.gap-4.text-sm.text-gray-600.mb-3 > span:nth-child(1) > span",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search?q=%SearchKey%&page=%Page%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "TorrentKitty",
+            "engineUrl": "https://torrentkitty.one",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search/%SearchKey%/%Page%/"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search/%SearchKey%/%Page%/",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "cache-control": "max-age=0",
+                        "priority": "u=0, i",
+                        "referer": "https://torrentkitty.one/search/",
+                        "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "document",
+                        "sec-fetch-mode": "navigate",
+                        "sec-fetch-site": "same-origin",
+                        "sec-fetch-user": "?1",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "#archiveResult>tbody>tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td.name",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td.action > a[rel='information']",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td.action > a[href^='magnet:?xt=urn:btih:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td.size",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td.date",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td.name",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search/%SearchKey%/%Page%/"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Mikan",
+            "engineUrl": "https://mikanani.me",
+            "engineTags": ["anime"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/Home/Search?searchstr=%SearchKey%"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/Home/Search?searchstr=%SearchKey%",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "zh-CN,zh;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "table tbody tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td:nth-child(2) a[href^='/Home/Episode/']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td:nth-child(2) a[href^='/Home/Episode/']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(3)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(4)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td:nth-child(2)",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "a[href^='magnet:']",
+                                    "action": "attr:href"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/Home/Search?searchstr=%SearchKey%"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "1337x",
+            "engineUrl": "https://www.1377x.to",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "default",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "默认",
+                    "sortKey": "default",
+                    "sortUrl": "/search/%SearchKey%/%Page%/"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search/%SearchKey%/%Page%/",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "en-US,en;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "table.table-list tbody tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td.name > a[href^='/torrent/']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td.name > a[href^='/torrent/']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td.size",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td.coll-date",
+                            "action": "text"
+                        },
+                        "hot": {
+                            "src": "td.seeds",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td.leeches",
+                            "action": "text"
+                        }
+                    },
+                    "nextStep": {
+                        "request": {
+                            "method": "GET",
+                            "url": "%detailLink%"
+                        },
+                        "parser": {
+                            "responseType": "html",
+                            "itemFields": {
+                                "magnet": {
+                                    "src": "a[href^='magnet:']",
+                                    "action": "attr:href"
+                                }
+                            }
+                        },
+                        "navigation": {
+                            "pageStart": 1,
+                            "sorts": []
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "default",
+                            "url": "/search/%SearchKey%/%Page%/"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "engineName": "Knaben",
+            "engineUrl": "https://knaben.org",
+            "engineTags": ["general"],
+            "isExternalEngine": false,
+            "defaultSort": "seeders",
+            "RequestMethod": "GET",
+            "DefaultPage": 1,
+            "engineStatus": "enable",
+            "sortList": [
+                {
+                    "sortName": "Seeders",
+                    "sortKey": "seeders",
+                    "sortUrl": "/search/%SearchKey%/0/%Page%/seeders"
+                },
+                {
+                    "sortName": "Date",
+                    "sortKey": "date",
+                    "sortUrl": "/search/%SearchKey%/0/%Page%/date"
+                },
+                {
+                    "sortName": "Size",
+                    "sortKey": "size",
+                    "sortUrl": "/search/%SearchKey%/0/%Page%/bytes"
+                },
+                {
+                    "sortName": "Peers",
+                    "sortKey": "peers",
+                    "sortUrl": "/search/%SearchKey%/0/%Page%/peers"
+                }
+            ],
+            "stepConfig": {
+                "request": {
+                    "method": "GET",
+                    "url": "/search/%SearchKey%/0/%Page%/seeders",
+                    "headers": {
+                        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                        "accept-language": "en-US,en;q=0.9",
+                        "upgrade-insecure-requests": "1",
+                        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                    }
+                },
+                "parser": {
+                    "responseType": "html",
+                    "listPointer": "table tbody tr",
+                    "itemFields": {
+                        "title": {
+                            "src": "td.text-wrap.w-100 a[href^='magnet:']",
+                            "action": "text"
+                        },
+                        "detailLink": {
+                            "src": "td.d-sm-none.d-xl-table-cell a[href]",
+                            "action": "attr:href"
+                        },
+                        "magnet": {
+                            "src": "td.text-wrap.w-100 a[href^='magnet:']",
+                            "action": "attr:href"
+                        },
+                        "size": {
+                            "src": "td:nth-child(3)",
+                            "action": "text"
+                        },
+                        "date": {
+                            "src": "td:nth-child(4)",
+                            "action": "text"
+                        },
+                        "hot": {
+                            "src": "td:nth-child(5)",
+                            "action": "text"
+                        },
+                        "description": {
+                            "src": "td:nth-child(7)",
+                            "action": "text"
+                        }
+                    }
+                },
+                "navigation": {
+                    "pageStart": 1,
+                    "sorts": [
+                        {
+                            "name": "seeders",
+                            "url": "/search/%SearchKey%/0/%Page%/seeders"
+                        },
+                        {
+                            "name": "date",
+                            "url": "/search/%SearchKey%/0/%Page%/date"
+                        },
+                        {
+                            "name": "size",
+                            "url": "/search/%SearchKey%/0/%Page%/bytes"
+                        },
+                        {
+                            "name": "peers",
+                            "url": "/search/%SearchKey%/0/%Page%/peers"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
