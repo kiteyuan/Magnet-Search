@@ -27,44 +27,44 @@ V 2.1.2：
 
 首次使用工具需要配置规则，可手动导入和云导入，导入成功后即可开始搜索（移动端入口：【个人】-【我的规则】）。用户可借助Claude Code、Codex、Cursor等相关AI编程工具编写自定义规则，相关的Skill和规则示例模板地址：[配置自定义规则教程和Agent Skill文档](https://github.com/kiteyuan/Magnet-Search)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=NzFjMzA0NDVmYTBkMGI4OTZlOTBlOGFmN2U3N2ZhNmFfbXhwQlByRGdTZ3B2d291NnZhN0NtWVFqNHZac0d1eUxfVG9rZW46UnFsOWIyNWYxb2hPNnh4SW5jZmNnYkJvbnJkXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMmaiGug2diUP_tveAc8icC61qC080AAkgMaxuolBBFumDocCd_SD0BAAMCAAN3AAM7BA.png)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=M2I0ODMzYzM0NDYyMDBjMWJkZTNmODI3ODRhNzI1NDNfc2VoNGJGYkhWNGxWV0llck0zMUF2bTFDMWxNZktpcDJfVG9rZW46WmEzN2JlSWRob1NtQWh4MWFRaGNDbXhNbndiXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMnaiGu3Hs3bAABlzxq-ykJkH6rNxT3AAJJDGsbqJQQRVchJRZwoZmEAQADAgADdwADOwQ.png)
 
 #### 二、磁力搜索
 
 引擎规则配置完成后，即可进行资源搜索，除了搜索结果列表，工具还提供额外的预览和查看文件结构等附加功能。
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=N2E2M2Q2ZWVjZjFiNWMzMmRhNDE1YmUxMWE5OThjMzdfTjZQekgwM3BKT2l6TVlTQzhWRWhwTnV6N3VEbU1lazZfVG9rZW46UnBvVWJsYXc2b1RzbGR4Ym14cmNFNWwwbkViXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMoaiGu8XxYhKHaN0dPwckVbr5kTNsAAksMaxuolBBFCirXLhBCmNUBAAMCAAN3AAM7BA.png)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=YTlhOGUyN2Q4YzY3MDlhOGRlZWEwYzFmMDBlYzlmZmRfSjF1NG56RldTYW9ZSjlmUWZYVnF5WjFOZ0taSGxQNWVfVG9rZW46VXoxY2JkNVdvb3NFZzZ4OVBPM2N2UmhGbjNmXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMpaiGvBKfSbrCh6LI2VAJMfJZYIq0AAkwMaxuolBBFIAww6knDDq8BAAMCAAN3AAM7BA.png)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=MDZjZTEyYjBjNDdiYmM3ZmJjNDY4OGYzOTRkMGFkZmZfYlA2NzJ0NEM5d01nSkFxTExWRlIzakp4VUQ5QW9kWGFfVG9rZW46UEtXVGI3bVN6b3VQcjN4b1lUU2N4cXZxbnJlXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMqaiGvGehFEiX8X_xOuYW6XH2hOcoAAk0MaxuolBBFhBG2EhXdkvIBAAMCAAN3AAM7BA.png)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjA2ZTcwNDJhOTMwZDg5NTM5MzM4ZDMzNDlhMGFiNDdfTnJyWjlqbkxZSG9qdEg4STd3MnZNdk40RVBZVTMxc29fVG9rZW46RVNmeGJZVUZvb1Nodmh4d2ZTNWNMSm13bmhkXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMraiGvLDLJUhAh6elRb7qFbeCwSwADTwxrG6iUEEUGsjoJZgT5TwEAAwIAA3cAAzsE.png)
 
 #### 三、磁力解析
 
 用户可键入任意磁力链接，自动解析出相关预览图和文件结构信息。（移动端入口：底部菜单第三个功能页面）
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=YjA3Nzc1MTViZjRjNDFjYTczMWJhMTNjNDIwZTEzNjBfQXVrdEdOMnltcEltUmNkdXJieno4elczc0poSWVpbGJfVG9rZW46VDNsbmJ5N1dEbzI2bDR4RmtFcGNiZUVLbnlBXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMsaiGvRKDhuKxCWtXVI2XL_FG8rQ0AAlAMaxuolBBFdh5-KrhnrGMBAAMCAAN3AAM7BA.png)
 
 #### 四、我的收藏
 
 账号登录状态下，用户可以将收藏合集进行外部分享链接/RSS订阅。
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=MzdkNDMzOTU5ZTNjYzc3NzNjN2RlZmRiODA2NmVlYjFfVEpiRTh3a3pXUUtRUWhRd1VEMklkRlp6cHdiRnJ3aGRfVG9rZW46T2ZhRmJDT0Rjb0VwTG14SmxaaGNnSzN6bmJjXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMtaiGvVyW_wYFGt29POyhGfvhTHNAAAlEMaxuolBBFMQSb0WcuAaABAAMCAAN3AAM7BA.png)
 
 #### 五、帖子广场
 
 账号登录状态下，用户可以发布文章帖子。
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=MGVmOWNmNjdiYzFiMTVmNTI2YjY4ZGEwODQxMTE2ODNfQVdHVDFwQ3RoblJRbGNHaUZPN0VEY0NDcGhSTktGeWxfVG9rZW46UzNZTmI5d2Rhb3VqR3F4SHIxbGNCVFVYbmdFXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMuaiGvaLqbLUn5xz6H8QQedNm0z4cAAlIMaxuolBBFU3TF8TWYjucBAAMCAAN3AAM7BA.png)
 
 #### 六、磁力转存
 
 磁力转存的相关功能均在内测中，并且工具地址在【纸鸢下载】项目中（非纸鸢磁力），内测期间需要内测码。
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=Zjc1NmUwNGU3YzFjMjRlODE4ZTVkMGVlOTBjMmY3NTZfVzloNll2WDNFNlN6Y2J2TjZqVVhTT0tMaFRpT0dwVFhfVG9rZW46S3lyWGJOMVlvb1BWQ0d4NG1wR2NPcnc2bmZmXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMvaiGveUkDQfjCyISNDm0HuxNmNhkAAlMMaxuolBBFyli6wewHUeEBAAMCAAN3AAM7BA.png)
 
-![img](https://zi4fjhb0qmq.feishu.cn/space/api/box/stream/download/asynccode/?code=MzQ4Y2IyYTFkZTdjMmQzMzRmNWQ3ZTliMzhjOWM1MjRfUGxlQURyTXBPckdudzB5bVhRVGpkYUs0dDI3T1dHR25fVG9rZW46QzlhVWIyVEVNbzA5a3Z4Ykw1bGM1ZmFsbkxoXzE3ODA1NzQyMDk6MTc4MDU3NzgwOV9WNA)
+![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMwaiGvh9T1R_yfKZi0PXQlYxvmBcQAAlQMaxuolBBFeCClWV44wkEBAAMCAAN3AAM7BA.png)
