@@ -27,44 +27,55 @@ V 2.1.2：
 
 首次使用工具需要配置规则，可手动导入和云导入，导入成功后即可开始搜索（移动端入口：【个人】-【我的规则】）。用户可借助Claude Code、Codex、Cursor等相关AI编程工具编写自定义规则，相关的Skill和规则示例模板地址：[配置自定义规则教程和Agent Skill文档](https://github.com/kiteyuan/Magnet-Search)
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMmaiGug2diUP_tveAc8icC61qC080AAkgMaxuolBBFumDocCd_SD0BAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/6a5b0d78-2bca-4ca6-8e7e-e935561b17b6" />
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMnaiGu3Hs3bAABlzxq-ykJkH6rNxT3AAJJDGsbqJQQRVchJRZwoZmEAQADAgADdwADOwQ.png)
+
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/9d5e0231-66ca-40e2-96fc-2a79e16e3f5e" />
+
+
 
 #### 二、磁力搜索
 
 引擎规则配置完成后，即可进行资源搜索，除了搜索结果列表，工具还提供额外的预览和查看文件结构等附加功能。
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMoaiGu8XxYhKHaN0dPwckVbr5kTNsAAksMaxuolBBFCirXLhBCmNUBAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/f933f4f7-3809-431c-842a-21cafb5a6d66" />
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMpaiGvBKfSbrCh6LI2VAJMfJZYIq0AAkwMaxuolBBFIAww6knDDq8BAAMCAAN3AAM7BA.png)
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMqaiGvGehFEiX8X_xOuYW6XH2hOcoAAk0MaxuolBBFhBG2EhXdkvIBAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/98f75cbf-c405-4211-8d22-411d656c397c" />
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMraiGvLDLJUhAh6elRb7qFbeCwSwADTwxrG6iUEEUGsjoJZgT5TwEAAwIAA3cAAzsE.png)
+
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/97c825e7-20cb-4b85-9ea9-3aff7efc3850" />
+
+
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/321ff841-7309-438e-a9c8-8a481f7f85a1" />
+
 
 #### 三、磁力解析
 
 用户可键入任意磁力链接，自动解析出相关预览图和文件结构信息。（移动端入口：底部菜单第三个功能页面）
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMsaiGvRKDhuKxCWtXVI2XL_FG8rQ0AAlAMaxuolBBFdh5-KrhnrGMBAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/776154a7-c83f-4890-af03-4ede97553a28" />
+
 
 #### 四、我的收藏
 
 账号登录状态下，用户可以将收藏合集进行外部分享链接/RSS订阅。
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMtaiGvVyW_wYFGt29POyhGfvhTHNAAAlEMaxuolBBFMQSb0WcuAaABAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/afc77bc1-e483-4441-9d03-9b2a1ba053d6" />
+
 
 #### 五、帖子广场
 
 账号登录状态下，用户可以发布文章帖子。
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMuaiGvaLqbLUn5xz6H8QQedNm0z4cAAlIMaxuolBBFU3TF8TWYjucBAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/d37c9f7d-7465-445b-84ab-8ca8cbae2253" />
+
 
 #### 六、磁力转存
 
 磁力转存的相关功能均在内测中，并且工具地址在【纸鸢下载】项目中（非纸鸢磁力），内测期间需要内测码。
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMvaiGveUkDQfjCyISNDm0HuxNmNhkAAlMMaxuolBBFyli6wewHUeEBAAMCAAN3AAM7BA.png)
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/092f803d-b309-4caa-b88b-393f6f922b3f" />
 
-![img](https://image.kiteyuan.info/file/AgACAgEAAyEGAATsZPTZAAMwaiGvh9T1R_yfKZi0PXQlYxvmBcQAAlQMaxuolBBFeCClWV44wkEBAAMCAAN3AAM7BA.png)
+
+<img width="2880" height="1462" alt="image" src="https://github.com/user-attachments/assets/f7122c23-ae98-472d-a7e8-2e8909664b0d" />
