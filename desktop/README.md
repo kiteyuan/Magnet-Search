@@ -1,4 +1,4 @@
-# Magnet 桌面 / Android（Tauri 2 网页壳）
+# 纸鸢磁力桌面 / Android（Tauri 2 网页壳）
 
 最小 Tauri 2 应用：启动后全窗口（或全屏 WebView）加载线上站点 [https://magnet.kiteyuan.info](https://magnet.kiteyuan.info)，无地址栏。
 

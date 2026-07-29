@@ -1,7 +1,7 @@
 [package]
 name = "magnet"
-version = "0.1.1"
-description = "Magnet desktop web shell for https://magnet.kiteyuan.info"
+version = "0.1.3"
+description = "纸鸢磁力桌面端网页壳（https://magnet.kiteyuan.info）"
 authors = ["kiteyuan"]
 edition = "2021"
 

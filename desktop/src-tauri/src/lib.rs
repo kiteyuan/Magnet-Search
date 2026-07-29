@@ -3,5 +3,5 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .run(tauri::generate_context!())
-        .expect("error while running Magnet");
+        .expect("error while running 纸鸢磁力");
 }

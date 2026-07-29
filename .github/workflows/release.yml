@@ -62,9 +62,9 @@ jobs:
         with:
           projectPath: desktop
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
-          releaseName: Magnet ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
+          releaseName: '纸鸢磁力 ${{ github.ref_type == "tag" && github.ref_name || "v__VERSION__" }}'
           releaseBody: |
-            Magnet 安装包（在线加载 https://magnet.kiteyuan.info）。
+            纸鸢磁力安装包（在线加载 https://magnet.kiteyuan.info）。
 
             ## 产物说明
             - **Windows**: `.msi` / `.exe`（NSIS）
@@ -135,7 +135,7 @@ jobs:
         with:
           projectPath: desktop
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
-          releaseName: Magnet ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
+          releaseName: '纸鸢磁力 ${{ github.ref_type == "tag" && github.ref_name || "v__VERSION__" }}'
           releaseDraft: false
           prerelease: false
           mobile: android
