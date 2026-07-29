@@ -21,8 +21,7 @@ jobs:
           - platform: ubuntu-22.04
             args: ""
           - platform: windows-latest
-            # WiX MSI 对中文 productName 支持差，Windows 只打 NSIS
-            args: --bundles nsis
+            args: ""
 
     runs-on: ${{ matrix.platform }}
 
@@ -68,7 +67,7 @@ jobs:
             纸鸢磁力安装包（在线加载 https://magnet.kiteyuan.info）。
 
             ## 产物说明
-            - **Windows**: `.exe`（NSIS；因 WiX 对中文应用名支持差，暂不产出 MSI）
+            - **Windows**: `.msi` / `.exe`（路径与包名为 `ZhiyuanMagnet`，窗口/快捷方式显示「纸鸢磁力」）
             - **macOS**: `.dmg` / `.app`（Apple Silicon `aarch64` 与 Intel `x86_64`）
             - **Linux**: `.AppImage` / `.deb`
             - **Android**: `.apk`（aarch64，debug 签名，可直接侧载安装；未做 Play 商店正式签名）

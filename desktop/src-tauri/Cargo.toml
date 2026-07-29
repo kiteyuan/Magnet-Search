@@ -1,6 +1,6 @@
 [package]
 name = "magnet"
-version = "0.1.5"
+version = "0.1.6"
 description = "纸鸢磁力桌面端网页壳（https://magnet.kiteyuan.info）"
 authors = ["kiteyuan"]
 edition = "2021"

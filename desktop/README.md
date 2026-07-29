@@ -33,7 +33,7 @@ npm run build
 
 | 平台 | 常见产物 |
 |------|----------|
-| Windows | `nsis/`（`.exe`；中文应用名下暂不打 MSI） |
+| Windows | `msi/`、`nsis/`（`.msi` / `.exe`，包名 `ZhiyuanMagnet`） |
 | macOS | `dmg/`、`macos/` |
 | Linux | `appimage/`、`deb/` |
 
@@ -55,6 +55,7 @@ CI 会在 runner 上自动 `tauri android init` 并产出 **aarch64 debug 签名
 ## 配置要点
 
 - **远程 URL**：`frontendDist` / `devUrl` / `windows[0].url` → `https://magnet.kiteyuan.info`
+- **命名拆分**：路径 / 安装包 / 可执行文件用 ASCII（`ZhiyuanMagnet`）；窗口标题、快捷方式、「应用和功能」显示「纸鸢磁力」
 - **CSP**：允许 `magnet.kiteyuan.info` 与 `*.kiteyuan.info`
 - **Capabilities**：`src-tauri/capabilities/default.json` 中 `remote.urls` 已放行该域名
 - **窗口**：桌面默认 `1200x800`，可调整大小

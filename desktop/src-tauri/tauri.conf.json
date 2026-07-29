@@ -1,7 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "纸鸢磁力",
-  "version": "0.1.5",
+  "productName": "ZhiyuanMagnet",
+  "mainBinaryName": "ZhiyuanMagnet",
+  "version": "0.1.6",
   "identifier": "info.kiteyuan.magnet",
   "build": {
     "beforeDevCommand": "",
@@ -39,6 +40,9 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "publisher": "kiteyuan",
+    "shortDescription": "纸鸢磁力",
+    "longDescription": "纸鸢磁力桌面端（在线加载 https://magnet.kiteyuan.info）",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -52,7 +56,8 @@
       },
       "nsis": {
         "languages": ["SimpChinese", "English"],
-        "displayLanguageSelector": false
+        "displayLanguageSelector": false,
+        "installerHooks": "./windows/hooks.nsh"
       },
       "wix": {
         "language": "zh-CN"
@@ -62,8 +67,13 @@
       "minimumSystemVersion": "10.15"
     },
     "linux": {
-      "deb": {},
-      "appimage": {}
+      "deb": {
+        "desktopTemplate": "./linux/main.desktop"
+      },
+      "appimage": {},
+      "rpm": {
+        "desktopTemplate": "./linux/main.desktop"
+      }
     }
   }
 }
