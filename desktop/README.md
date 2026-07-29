@@ -85,7 +85,7 @@ git push origin v0.1.1
 | `macos-latest` | Apple Silicon + Intel |
 | `ubuntu-latest` | Android APK（`tauri android`，aarch64 debug） |
 
-产物上传到 **GitHub Release（draft）**。
+产物上传到 **GitHub Release**（正式发布，非 draft）。
 
 仓库需允许 Actions 写入：Settings → Actions → General → Workflow permissions → **Read and write permissions**。
 

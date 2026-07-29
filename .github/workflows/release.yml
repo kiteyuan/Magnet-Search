@@ -73,7 +73,7 @@ jobs:
             - **Android**: `.apk`（aarch64，debug 签名，可直接侧载安装；未做 Play 商店正式签名）
 
             > 当前未配置 Apple 公证 / Windows 代码签名 / Play 商店上架签名，首次打开可能提示未验证开发者。
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
 
@@ -136,7 +136,7 @@ jobs:
           projectPath: desktop
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
           releaseName: Magnet ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           mobile: android
           # debug 签名可直接安装；正式 Play 签名后续用 secrets 配置
