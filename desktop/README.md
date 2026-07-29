@@ -33,7 +33,7 @@ npm run build
 
 | 平台 | 常见产物 |
 |------|----------|
-| Windows | `msi/`、`nsis/`（`.msi` / `.exe`） |
+| Windows | `nsis/`（`.exe`；中文应用名下暂不打 MSI） |
 | macOS | `dmg/`、`macos/` |
 | Linux | `appimage/`、`deb/` |
 
