@@ -62,7 +62,7 @@ jobs:
         with:
           projectPath: desktop
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
-          releaseName: '纸鸢磁力 ${{ github.ref_type == "tag" && github.ref_name || "v__VERSION__" }}'
+          releaseName: "纸鸢磁力 ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}"
           releaseBody: |
             纸鸢磁力安装包（在线加载 https://magnet.kiteyuan.info）。
 
@@ -135,7 +135,7 @@ jobs:
         with:
           projectPath: desktop
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}
-          releaseName: '纸鸢磁力 ${{ github.ref_type == "tag" && github.ref_name || "v__VERSION__" }}'
+          releaseName: "纸鸢磁力 ${{ github.ref_type == 'tag' && github.ref_name || 'v__VERSION__' }}"
           releaseDraft: false
           prerelease: false
           mobile: android
