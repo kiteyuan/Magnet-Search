@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Magnet",
+  "version": "0.1.0",
+  "identifier": "info.kiteyuan.magnet",
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devUrl": "https://magnet.kiteyuan.info",
+    "frontendDist": "https://magnet.kiteyuan.info"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Magnet",
+        "width": 1200,
+        "height": 800,
+        "resizable": true,
+        "fullscreen": false,
+        "url": "https://magnet.kiteyuan.info"
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self' https://magnet.kiteyuan.info https://*.kiteyuan.info",
+        "connect-src": "'self' ipc: http://ipc.localhost https://magnet.kiteyuan.info https://*.kiteyuan.info https: wss: ws:",
+        "img-src": "'self' data: blob: https: http:",
+        "script-src": "'self' 'unsafe-inline' 'unsafe-eval' https://magnet.kiteyuan.info https://*.kiteyuan.info https:",
+        "style-src": "'self' 'unsafe-inline' https:",
+        "font-src": "'self' data: https:",
+        "frame-src": "'self' https:",
+        "media-src": "'self' blob: https: http:",
+        "worker-src": "'self' blob: https:"
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "10.15"
+    },
+    "linux": {
+      "deb": {},
+      "appimage": {}
+    }
+  }
+}
