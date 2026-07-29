@@ -1,6 +1,6 @@
-# Magnet 桌面端（Tauri 2 网页壳）
+# Magnet 桌面 / Android（Tauri 2 网页壳）
 
-最小 Tauri 2 应用：启动后全窗口加载线上站点 [https://magnet.kiteyuan.info](https://magnet.kiteyuan.info)，无地址栏，体验接近普通网页浏览。
+最小 Tauri 2 应用：启动后全窗口（或全屏 WebView）加载线上站点 [https://magnet.kiteyuan.info](https://magnet.kiteyuan.info)，无地址栏。
 
 ## 环境要求
 
@@ -9,9 +9,10 @@
 - 各平台系统依赖见 [Tauri 前提条件](https://v2.tauri.app/start/prerequisites/)
   - Windows：WebView2（一般已预装）
   - macOS：Xcode Command Line Tools
-  - Linux：`webkit2gtk` 等（Ubuntu 示例见下方 CI）
+  - Linux：`webkit2gtk` 等
+  - Android（可选本地构建）：Android Studio / SDK + NDK，并设置 `ANDROID_HOME`、`NDK_HOME`
 
-## 本地开发
+## 本地开发（桌面）
 
 ```bash
 cd desktop
@@ -19,9 +20,9 @@ npm install
 npm run dev
 ```
 
-开发与正式包均直接打开 `https://magnet.kiteyuan.info`（见 `src-tauri/tauri.conf.json` 的 `devUrl` / `frontendDist` / `windows[0].url`）。
+开发与正式包均直接打开 `https://magnet.kiteyuan.info`（见 `src-tauri/tauri.conf.json`）。
 
-## 本地打包
+## 本地打包（桌面）
 
 ```bash
 cd desktop
@@ -36,14 +37,29 @@ npm run build
 | macOS | `dmg/`、`macos/` |
 | Linux | `appimage/`、`deb/` |
 
+## Android
+
+日常发版靠 GitHub Actions；本机没有 SDK 也可以不装。若本机要调试：
+
+```bash
+cd desktop
+# 安装 Android Studio，配置 ANDROID_HOME / NDK_HOME 后：
+npm run android:init
+npm run android:dev
+# 打包 APK：
+npm run android:build
+```
+
+CI 会在 runner 上自动 `tauri android init` 并产出 **aarch64 debug 签名 APK**（可侧载安装）。Play 商店正式签名后续再配 secrets。
+
 ## 配置要点
 
-- **远程 URL**：`frontendDist` / `devUrl` 指向 `https://magnet.kiteyuan.info`
-- **CSP**：允许 `magnet.kiteyuan.info` 与 `*.kiteyuan.info` 相关资源（`tauri.conf.json` → `app.security.csp`）
-- **Capabilities**：`src-tauri/capabilities/default.json` 中 `remote.urls` 已放行该域名，便于远程页使用 Tauri IPC（如 opener）
-- **窗口**：默认 `1200x800`，可调整大小
+- **远程 URL**：`frontendDist` / `devUrl` / `windows[0].url` → `https://magnet.kiteyuan.info`
+- **CSP**：允许 `magnet.kiteyuan.info` 与 `*.kiteyuan.info`
+- **Capabilities**：`src-tauri/capabilities/default.json` 中 `remote.urls` 已放行该域名
+- **窗口**：桌面默认 `1200x800`，可调整大小
 
-本地 `src/index.html` 仅为占位说明；当前构建**不会**把整站离线打进安装包。
+本地 `src/index.html` 仅为占位；**不会**把整站离线打进安装包。
 
 ## CI 发布（GitHub Actions）
 
@@ -51,11 +67,11 @@ npm run build
 
 **触发方式**
 
-1. 推送版本 tag（推荐）：
+1. 推送版本 tag：
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.1.1
+git push origin v0.1.1
 ```
 
 2. 或在 GitHub Actions 页手动 `workflow_dispatch`
@@ -65,43 +81,33 @@ git push origin v0.1.0
 | Runner | 说明 |
 |--------|------|
 | `windows-latest` | Windows 安装包 |
-| `ubuntu-22.04` | Linux（安装 webkit2gtk 等依赖） |
-| `macos-latest` | 分别产出 Apple Silicon（`aarch64-apple-darwin`）与 Intel（`x86_64-apple-darwin`） |
+| `ubuntu-22.04` | Linux |
+| `macos-latest` | Apple Silicon + Intel |
+| `ubuntu-latest` | Android APK（`tauri android`，aarch64 debug） |
 
-构建使用官方 [`tauri-apps/tauri-action`](https://github.com/tauri-apps/tauri-action)，产物上传到 **GitHub Release（draft）**。
+产物上传到 **GitHub Release（draft）**。
 
 仓库需允许 Actions 写入：Settings → Actions → General → Workflow permissions → **Read and write permissions**。
 
-## 签名 / 公证（后续可选）
+## 签名 / 公证 / 上架（后续可选）
 
 当前**未**配置：
 
-- Apple Developer 公证（Notarization）
-- Windows 代码签名证书
-
-需要时在 workflow 中补充对应 secrets（如 `APPLE_CERTIFICATE`、`APPLE_ID`、`TAURI_SIGNING_*` 等），并参考 [Tauri 分发文档](https://v2.tauri.app/distribute/)。
-
-## Android（可选，不阻塞桌面）
-
-桌面交付不依赖 Android。若要扩展：
-
-```bash
-cd desktop
-npm run tauri android init
-npm run tauri android dev
-```
+- Apple Developer 公证
+- Windows 代码签名
+- Android Play 商店上传密钥（见 [Android 签名](https://v2.tauri.app/distribute/sign/android/)）
 
 ## 目录结构
 
 ```
 desktop/
   package.json
-  src/                 # 本地占位页（默认未作为 frontendDist）
+  src/                 # 本地占位页
   src-tauri/
-    tauri.conf.json    # 应用名、窗口、远程 URL、CSP、打包
-    capabilities/      # 远程域名权限
-    icons/             # 默认图标占位
-    src/               # Rust 入口
+    tauri.conf.json
+    capabilities/
+    icons/
+    src/
 .github/workflows/
-  release.yml          # Win / macOS / Linux 自动发版
+  release.yml          # Win / macOS / Linux / Android 发版
 ```

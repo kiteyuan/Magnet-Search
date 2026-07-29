@@ -4,7 +4,7 @@
 
 工具地址：[纸鸢发布页地址](https://kiteyuan.info/) [网页版地址1](https://magnet.kiteyuan.info/) [网页版地址2](https://search.kiteyuan.info/) [纸鸢下载内测地址](https://mybt.kiteyuan.info/) APP版地址：关注微信公众号【纸鸢花的小屋】回复【纸鸢磁力】【纸鸢下载】【纸鸢下载内测码】关键词获取。
 
-桌面端（Tauri 2 网页壳，在线加载网页版）：见 [`desktop/`](./desktop/) 与 [desktop/README.md](./desktop/README.md)。推送 `v*` tag 或手动触发 Actions 可产出 Win / macOS / Linux 安装包。
+桌面 / Android（Tauri 2 网页壳，在线加载网页版）：见 [`desktop/`](./desktop/) 与 [desktop/README.md](./desktop/README.md)。推送 `v*` tag 或手动触发 Actions 可产出 Win / macOS / Linux 安装包与 Android APK。
 
 V 3.0.0：
 

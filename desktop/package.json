@@ -1,11 +1,14 @@
 {
   "name": "magnet-desktop",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
     "build": "tauri build",
+    "android:init": "tauri android init",
+    "android:dev": "tauri android dev",
+    "android:build": "tauri android build --apk --target aarch64",
     "tauri": "tauri"
   },
   "devDependencies": {
