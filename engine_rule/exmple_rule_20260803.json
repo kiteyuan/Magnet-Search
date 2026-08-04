@@ -1,6 +1,6 @@
 {
     "configName": "通用规则",
-    "configVersion": "1.0.7",
+    "configVersion": "1.0.8",
     "regulars": [
         {
             "engineName": "磁力蜘蛛",
@@ -634,7 +634,7 @@
         },
         {
             "engineName": "BTShow",
-            "engineUrl": "https://btsow.pics",
+            "engineUrl": "https://btsow.live",
             "engineTags": [
                 "general"
             ],
@@ -660,8 +660,8 @@
                         "accept": "application/json, text/plain, */*",
                         "accept-language": "zh-CN,zh;q=0.9",
                         "content-type": "application/json",
-                        "origin": "https://btsow.pics",
-                        "referer": "https://btsow.pics/",
+                        "origin": "https://btsow.live",
+                        "referer": "https://btsow.live/",
                         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
                         "pragma": "no-cache",
                         "expires": "0",
@@ -687,7 +687,7 @@
                         "detailLink": {
                             "src": "hash",
                             "action": "value",
-                            "template": "https://btsow.pics/magnet/detail/%value%"
+                            "template": "https://btsow.live/magnet/detail/%value%"
                         },
                         "magnet": {
                             "src": "hash",
@@ -929,7 +929,7 @@
         },
         {
             "engineName": "磁力星球",
-            "engineUrl": "https://div.xingqiu.icu",
+            "engineUrl": "https://so.starcs.top",
             "engineTags": [
                 "general",
                 "movie"
@@ -963,7 +963,7 @@
                     "headers": {
                         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
                         "accept-language": "zh-CN,zh;q=0.9",
-                        "referer": "https://div.xingqiu.icu/",
+                        "referer": "https://so.starcs.top/",
                         "upgrade-insecure-requests": "1",
                         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
                     }
@@ -1000,7 +1000,7 @@
                             "headers": {
                                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
                                 "accept-language": "zh-CN,zh;q=0.9",
-                                "referer": "https://div.xingqiu.icu/",
+                                "referer": "https://so.starcs.top/",
                                 "upgrade-insecure-requests": "1",
                                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
                             }
@@ -1664,7 +1664,7 @@
         },
         {
             "engineName": "磁力狐",
-            "engineUrl": "https://cache.foxs.top",
+            "engineUrl": "https://cache.foxn.top",
             "engineTags": [
                 "general"
             ],
@@ -1703,7 +1703,7 @@
                         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
                         "accept-language": "zh-CN,zh;q=0.9",
                         "priority": "u=0, i",
-                        "referer": "https://cache.foxs.top/search?word=%SearchKey%",
+                        "referer": "https://cache.foxn.top/search?word=%SearchKey%",
                         "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\"",
                         "sec-ch-ua-mobile": "?0",
                         "sec-ch-ua-platform": "\"Windows\"",
@@ -1748,7 +1748,7 @@
                             "headers": {
                                 "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
                                 "accept-language": "zh-CN,zh;q=0.9",
-                                "referer": "https://cache.foxs.top/search?word=%SearchKey%",
+                                "referer": "https://cache.foxn.top/search?word=%SearchKey%",
                                 "upgrade-insecure-requests": "1",
                                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
                             }
@@ -1793,7 +1793,7 @@
         },
         {
             "engineName": "磁力帝",
-            "engineUrl": "https://www.cld140.buzz",
+            "engineUrl": "https://www.cld123.com",
             "engineTags": [
                 "general"
             ],
@@ -1851,30 +1851,31 @@
                 },
                 "parser": {
                     "responseType": "html",
-                    "listPointer": "div.tbox > div.ssbox",
+                    "listPointer": "article.resource.resource-card",
                     "itemFields": {
                         "title": {
-                            "src": "div.title h3 > a",
+                            "src": "h2 > a",
                             "action": "text"
                         },
                         "detailLink": {
-                            "src": "div.title h3 > a",
+                            "src": "h2 > a",
                             "action": "attr:href"
                         },
                         "magnet": {
-                            "src": "div.sbar a[href^='magnet:?xt=urn:btih:']",
-                            "action": "attr:href"
+                            "src": "h2 > a",
+                            "action": "attr:href",
+                            "template": "magnet:?xt=urn:btih:%btih%"
                         },
                         "size": {
-                            "src": "div.sbar > span:nth-child(3) > b",
+                            "src": "div.meta.resource-meta > span:nth-child(3)",
                             "action": "text"
                         },
                         "date": {
-                            "src": "div.sbar > span:nth-child(2) > b",
+                            "src": "div.meta.resource-meta > span:nth-child(2)",
                             "action": "text"
                         },
                         "description": {
-                            "src": "div.slist li",
+                            "src": "div.meta.resource-meta",
                             "action": "text"
                         }
                     }
